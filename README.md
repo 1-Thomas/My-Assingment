@@ -1,5 +1,5 @@
 # Assessment 1 - Advanced Programming
-Hello
+
 ## Project Overview
 This assessment requires you to create a Python application that simulates a simple library management system. The project will involve the use of Object-Oriented Programming (OOP) techniques, classes, and methods. You will also need to document the problem-solving process and provide a clear analysis of your approach.
 
