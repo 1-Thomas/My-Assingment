@@ -22,8 +22,11 @@ def create_instance():
 
     # Create a new instance of the Member class
     try:
+        member = Member("Thomas", 3)
+        print("New instance of Member class created")
         pass
     except NameError as e:
+        print(e)
         pass
 
     # Create a new instance of the TeacherMember class
@@ -38,7 +41,12 @@ def create_instance():
 '''
 Library Operations
 '''
-
+print("Welcome to our Libary! Please choose on option:")
+print("1. Add Book to Libary")
+print("2. Add New Member to Libary")
+print("3. Show books in Libary")
+print("4. Borrow a book")
+print("5. Show borrowed books")
 # Add books to the library
 
 
