@@ -48,7 +48,11 @@ print("3. Show books in Libary")
 print("4. Borrow a book")
 print("5. Show borrowed books")
 # Add books to the library
+selection = int(input("Please select one by typing a number"))
 
+if selection ==  1:
+    Library.add_book()
+    
 
 # Add member to the library
 

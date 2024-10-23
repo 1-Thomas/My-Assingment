@@ -1,3 +1,4 @@
+import json
 class Library:
     """
     Represents a library.
@@ -14,13 +15,24 @@ class Library:
         self.books = []
         self.members = []
 
-    def add_book(self, book):
+    def add_book():
         """
         Adds a book to the library.
 
         Args:
         - book (Book): The book to be added.
         """
+        title = input("Enter Book Title ")
+        author = input("Enter Author ")
+
+        toWrite = {
+            "Book Title": title,
+            "Author": author
+            }
+
+        with open("library_catalogue.json", "a") as f:
+            json.dump(toWrite, f, indent = 4)
+            f.write(",\n")
         
 
     def remove_book(self, book):
