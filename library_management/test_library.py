@@ -52,7 +52,8 @@ selection = int(input("Please select one by typing a number"))
 
 if selection ==  1:
     Library.add_book()
-    
+elif selection == 2:
+    Library.remove_book()    
 
 # Add member to the library
 

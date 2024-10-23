@@ -1,4 +1,6 @@
 import json
+
+
 class Library:
     """
     Represents a library.
@@ -35,13 +37,28 @@ class Library:
             f.write(",\n")
         
 
-    def remove_book(self, book):
+    def remove_book():
         """
         Removes a book from the library.
 
         Args:
         - book (Book): The book to be removed.
+
         """
+        with open("library_catalogue.json", "r") as f:
+            data2 = json.load(f)
+
+        remove = input("Please Enter the book you would like to delete")
+        if remove in data2:
+            del data2[remove]
+        with open("library_catalogue.json", 'w')as f:
+            json.dump(data2,"library_catalogue.json", indent=4)
+
+
+   
+
+   
+    
         
 
     def add_member(self, member):
