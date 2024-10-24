@@ -17,50 +17,6 @@ class Library:
         self.books = []
         self.members = []
 
-    def add_book():
-        """
-        Adds a book to the library.
-
-        Args:
-        - book (Book): The book to be added.
-        """
-        title = input("Enter Book Title ")
-        author = input("Enter Author ")
-
-        toWrite = {
-            "Book Title": title,
-            "Author": author
-            }
-
-        with open("library_catalogue.json", "a") as f:
-            json.dump(toWrite, f, indent = 4)
-            f.write(",\n")
-        
-
-    def remove_book():
-        """
-        Removes a book from the library.
-
-        Args:
-        - book (Book): The book to be removed.
-
-        """
-        with open("library_catalogue.json", "r") as f:
-            data2 = json.load(f)
-
-        remove = input("Please Enter the book you would like to delete")
-        if remove in data2:
-            del data2[remove]
-        with open("library_catalogue.json", 'w')as f:
-            json.dump(data2,"library_catalogue.json", indent=4)
-
-
-   
-
-   
-    
-        
-
     def add_member(self, member):
         """
         Adds a member to the library.

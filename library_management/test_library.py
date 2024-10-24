@@ -6,13 +6,15 @@ from book import Book
 from library import Library
 from member import Member, TeacherMember, StudentMember
 
-def create_instance():
+def create_instance(self, book_new):
     # Create a new instance of the Book class
+    
     try:
-        book = Book("Eloquent Python", "Abdulhameed")
+        book_new = Book("Eloquent Python", "Abdulhameed")
         print("New instance of Book class created")
+        pass
     except NameError as e:
-        print(e)
+         print(e)
 
     # Create a new instance of the Library class
     try:
@@ -41,6 +43,8 @@ def create_instance():
 '''
 Library Operations
 '''
+
+
 print("Welcome to our Libary! Please choose on option:")
 print("1. Add Book to Libary")
 print("2. Add New Member to Libary")
@@ -51,13 +55,20 @@ print("5. Show borrowed books")
 selection = int(input("Please select one by typing a number"))
 
 if selection ==  1:
-    Library.add_book()
+    title = input("Please insert title:")
+    author = input("Please author title:")
+    book_new = Book(title, author)
+    book_new.save_book()
+    
+    
+
 elif selection == 2:
-    Library.remove_book()    
+    Book.remove_book()    
 
 # Add member to the library
 
 # List available books in the library
+
 
 # Borrow a book from the library
 
