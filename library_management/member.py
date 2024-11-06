@@ -122,20 +122,20 @@ class Member:
         sel = input("Please insert your name:")
         with open("borrowed_list.json", "r") as file:
             data = json.load(file)
-        print(data)
         for i in range(len(data)):
             if data[i]['Member'] == sel:
-                mborrow = data[i]
+                with open("temp_member.json", "w")as file:
+                    json.dump(data[i], file, indent = 4)
                 print(f"Here are all the books you have borrowed:{data[i]}")
-                sel2 = input("Please insert the book you would like to return")
+                #sel2 = input("Please insert the book you would like to return")
                 break
 
-        data = mborrow
-        for i in range(len(data)):
-            if data[i]["Book_Borrowed"] == sel2:
-                print(f"You sucessfully returned {data[i]}")
-                del data[i]
-                break
+        #data = "temp_member.json"
+        #for i in range(len(data)):
+            #if data[i]["Book_Borrowed"] == sel2:
+                #print(f"You sucessfully returned {data[i]}")
+                #del data[i]
+                #break
  
 
 
