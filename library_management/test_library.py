@@ -5,6 +5,7 @@
 from book import Book
 from library import Library
 from member import Member, TeacherMember, StudentMember
+from member import Member
 
 def create_instance(self, book_new):
     # Create a new instance of the Book class
@@ -63,7 +64,14 @@ if selection ==  1:
     
 
 elif selection == 2:
-    Book.remove_book()    
+    Book.remove_book()
+
+
+elif selection == 4:
+    name = input("Please member name:")
+    mnumber = input("Please author title:")
+    member_new = Member(name, mnumber)
+    member_new.save_member()
 
 # Add member to the library
 

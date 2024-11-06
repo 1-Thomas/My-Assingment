@@ -1,3 +1,4 @@
+import json
 class Member:
     """
     A class to represent a library member.
@@ -9,7 +10,7 @@ class Member:
         A list of books borrowed by the member.
     """
 
-    def __init__(self, name):
+    def __init__(self, name, mnumber):
         """
         Constructs all the necessary attributes for the member object.
 
@@ -18,6 +19,27 @@ class Member:
         """
         self.name = name
         self.borrowed_books = []
+        self.mnumber = mnumber
+
+    
+    def add_member(self):
+        """
+        Adds a member to the library.
+
+        Args:
+        - member (Member): The member to be added.
+        """
+        return{
+            "Name:" : self.name,
+            "Member Number" : self.mnumber
+        }
+
+    def save_member(self):
+        data = self.add_member()
+        with open("member_list.json", "r") as file:
+            json.dump(data, file, indent = 4)
+
+        
 
     def borrow_book(self, book):
         """

@@ -17,14 +17,7 @@ class Library:
         self.books = []
         self.members = []
 
-    def add_member(self, member):
-        """
-        Adds a member to the library.
 
-        Args:
-        - member (Member): The member to be added.
-        """
-        
 
     def remove_member(self, member):
         """
