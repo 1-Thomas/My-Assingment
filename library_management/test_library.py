@@ -48,9 +48,11 @@ Library Operations
 
 print("Welcome to our Libary! Please choose on option:")
 print("1. Add Book to Libary")
-print("2. Add New Member to Libary")
+print("2. Remove Book from Libary")
 print("3. Show books in Libary")
-print("4. Borrow a book")
+print("4. Add New Member to Libary")
+print("5. Remove Member to Libary")
+print("6. Borrow a book")
 print("5. Show borrowed books")
 # Add books to the library
 selection = int(input("Please select one by typing a number"))
@@ -61,10 +63,15 @@ if selection ==  1:
     book_new = Book(title, author)
     book_new.save_book()
     
-    
-
 elif selection == 2:
     Book.remove_book()
+
+elif selection == 3:
+    print("Here are all the current books")
+    data = Book.list_available_books()
+    for x in range(len(data)):
+        print(f"{data[x]['Title:']} : {data[x]["Author:"]}")
+
 
 
 elif selection == 4:
@@ -72,6 +79,16 @@ elif selection == 4:
     mnumber = input("Please author title:")
     member_new = Member(name, mnumber)
     member_new.save_member()
+
+elif selection == 5:
+    Member.remove_member()
+
+elif selection == 6:
+    Member.borrow_book()
+
+elif selection == 7:
+    Member.return_book()
+        
 
 # Add member to the library
 

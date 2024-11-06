@@ -19,13 +19,6 @@ class Library:
 
 
 
-    def remove_member(self, member):
-        """
-        Removes a member from the library.
-
-        Args:
-        - member (Member): The member to be removed.
-        """
         
 
     def borrow_book(self, book, member):
@@ -51,12 +44,7 @@ class Library:
         self.books.append(book)
         member.return_book(book)
 
-    def list_available_books(self):
-        """
-        Lists all available books in the library.
-        """
-        for book in self.books:
-            print(f"Title: {book.title}, Author: {book.author}")
+
 
     def list_borrowed_books(self):
         """

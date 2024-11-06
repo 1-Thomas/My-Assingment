@@ -1,4 +1,5 @@
 import json
+import os
 class Book:
     """
     A class to represent a book.
@@ -16,8 +17,10 @@ class Book:
         title (str): The title of the book.
         author (str): The author of the book.
         """
+
         self.title = title
         self.author = author
+
 
     def add_book(self):
         """
@@ -28,7 +31,7 @@ class Book:
         """
         return{
             "Title:" : self.title,
-            "Author" : self.author
+            "Author:" : self.author
         }
     
     def save_book(self):
@@ -48,15 +51,28 @@ class Book:
             data = json.load(file)
         print(data)
 
-        selectb = input("Please select the book you would like to remove:")
+        select = input("Please select the book you would like to remove:")
 
         for i in range(len(data)):
-            if data[i]['Title:'] == selectb:
+            if data[i]['Title:'] == select:
                 del data[i]
                 break
         
         with open("Library_catalogue.json", "w")as file:
             json.dump(data, file, indent = 4)
+
+    def list_available_books():
+        """
+        Lists all available books in the library.
+        """
+        with open("Library_catalogue.json", "r")as file:
+            data = json.load(file)
+        return data
+
+
+
+            
+
 
      
 
