@@ -8,34 +8,22 @@ class Member:
     Attributes:
     name : str
         The name of the member.
-    borrowed_books : list
-        A list of books borrowed by the member.
     """
 
-    def __init__(self, name, mnumber):
-        """
-        Constructs all the necessary attributes for the member object.
 
-        Parameters:
-        name (str): The name of the member.
-        """
+    def __init__(self, name, mnumber, member_type):
+ 
         self.name = name
-        self.borrowed_books = []
         self.mnumber = mnumber
-
+        self.member_type = member_type
+        self.borrowed_books = []
     
     def add_member(self):
-        """
-        Adds a member to the library.
-
-        Args:
-        - member (Member): The member to be added.
-        """
-        return{
-            "Name:" : self.name,
-            "Member Number" : self.mnumber
+        return {
+            "Name:": self.name,
+            "Member Number": self.mnumber,
+            "Member Type": self.member_type
         }
-
 
 
     def remove_member():
@@ -165,46 +153,48 @@ class Member:
                 return
 
 
+    def list_borrowed_books():
+        """
+        Lists all available books in the library.
+        """
+        with open("borrowed_list.json", "r")as file:
+            data = json.load(file)
+        return data
 
 
 
 class StudentMember(Member):
-    """
-    A class to represent a student member, inheriting from Member.
 
-    Attributes:
-    student_id : str
-        The student ID of the member.
-    """
-
-    def __init__(self, name, student_id):
-        """
-        Constructs all the necessary attributes for the student member object.
-
-        Parameters:
-        name (str): The name of the student member.
-        student_id (str): The student ID of the member.
-        """
-        super().__init__(name)
+    def __init__(self, name, mnumber, student_id):
+        self.name = name
+        self.mnumber = mnumber
+        self.member_type = "Student"
+        self.borrowed_books = []
         self.student_id = student_id
+
+    def add_member(self):
+       
+        return {
+            "Name:": self.name,
+            "Member Number": self.mnumber,
+            "Member Type": self.member_type,
+            "Student ID": self.student_id
+        }
 
 
 class TeacherMember(Member):
-    """
-    A class to represent a teacher member, inheriting from Member.
+    def __init__(self, name, mnumber, teacher_id):
 
-    Attributes:
-    teacher_id : str
-        The teacher ID of the member.
-    """
-
-    def __init__(self, name, teacher_id):
-        """
-        Constructs all the necessary attributes for the teacher member object.
-
-        Parameters:
-        name (str): The name of the teacher member.
-        teacher_id (str): The teacher ID of the member.
-        """
-        super().__init__(name)
+        self.name = name
+        self.mnumber = mnumber
+        self.member_type = "Teacher"
+        self.borrowed_books = []
         self.teacher_id = teacher_id
+
+    def add_member(self):
+        return {
+            "Name:": self.name,
+            "Member Number": self.mnumber,
+            "Member Type": self.member_type,
+            "Teacher ID": self.teacher_id
+        }
