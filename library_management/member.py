@@ -1,5 +1,6 @@
 import json
 from SaveToJson import overwrite
+from SaveToJson import save_to_json
 class Member:
     """
     A class to represent a library member.
@@ -64,47 +65,49 @@ def remove_member():
 
         
 
-    def borrow_book():
-        """
-        Adds a book to the member's borrowed books list.
+def borrow_book():
+    """
+    Adds a book to the member's borrowed books list.
 
-        Parameters:
-        book (Book): The book to be borrowed.
-        """
-        ##self.borrowed_books.append(book)
-        with open("member_list.json", "r") as file:
-            data = json.load(file)
-        print(data)
+    Parameters:
+    book (Book): The book to be borrowed.
+    """
 
-        member_select = input("Please select which member you are")
+    with open("member_list.json", "r") as file:
+        data = json.load(file)
+        for x in range(len(data)):
+            print(f"{data[x]['Name:']} : {data[x]['Member Number']}")
 
-        for i in range(len(data)):
-            if data[i]['Name:'] == member_select:
-                member1 = data[i]['Name:']
-                break
-        print(member1)
+    member_select = input("Please select which member you are")
 
-        with open("Library_catalogue.json", "r")as file:
-            data = json.load(file)
-        print(data)
+    for i in range(len(data)):
+        if data[i]['Name:'] == member_select:
+            member1 = data[i]['Name:']
+            break
+    print(member1)
 
-        select = input("Please select the book you would like to borrow:")
+    with open("Library_catalogue.json", "r")as file:
+        data = json.load(file)
+        for x in range(len(data)):
+            print(f"{data[x]['Title:']} : {data[x]['Author:']}")
 
-        for i in range(len(data)):
-            if data[i]['Title:'] == select:
-                book1 = data[i]['Title:']
-                del data[i]
-                break
+    select = input("Please select the book you would like to borrow:")
+
+    for i in range(len(data)):
+        if data[i]['Title:'] == select:
+            book1 = data[i]['Title:']
+            del data[i]
+            overwrite("Library_catalogue.json", data)
+            break
+    
+    print(f"Member {member1} sucessfully borrowed the book {book1}")
         
-        print(f"Member {member1} sucessfully borrowed the book {book1}")
-            
-        data = {    
-            "Member" : member1,
-            "Book_Borrowed" : book1
-        }
+    data = {    
+        "Member" : member1,
+        "Book_Borrowed" : book1
+    }
 
-        with open("borrowed_list.json", "a")as file:
-            json.dump(data, file , indent = 4)
+    save_to_json("borrowed_list.json", data)
 
             
 

@@ -1,26 +1,6 @@
-[    
+[
     {
-        "Member": "3",
-        "Book_Borrowed": "4"
-    },
-    {
-        "Member": "3",
-        "Book_Borrowed": "5"
-    },
-    {
-        "Member": "3",
-        "Book_Borrowed": "6"
-    },
-    {
-        "Member": "4",
-        "Book_Borrowed": "7"
-    },
-    {
-        "Member": "4",
-        "Book_Borrowed": "8"
-    },
-    {
-        "Member": "4",
-        "Book_Borrowed": "9"
+        "Member": "1",
+        "Book_Borrowed": "a"
     }
 ]
