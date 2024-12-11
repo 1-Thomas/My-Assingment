@@ -63,8 +63,6 @@ if selection ==  1:
     book_new = Book(title, author)
     save_to_json("Library_catalogue.json", book_new.add_book())
 
-
-    
 elif selection == 2:
     Book.remove_book()
 
@@ -75,12 +73,11 @@ elif selection == 3:
         print(f"{data[x]['Title:']} : {data[x]['Author:']}")
 
 
-
 elif selection == 4:
-    name = input("Please member name:")
-    mnumber = input("Please author title:")
+    name = input("Please insert the member's name: ")
+    mnumber = input("Please insert the member number: ")
     member_new = Member(name, mnumber)
-    member_new.save_member()
+    save_to_json("member_list.json", member_new.add_member())
 
 elif selection == 5:
     Member.remove_member()
