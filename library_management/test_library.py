@@ -6,7 +6,7 @@ from book import Book
 from library import Library
 from member import Member, TeacherMember, StudentMember
 from member import Member
-
+from SaveToJson import save_to_json
 def create_instance(self, book_new):
     # Create a new instance of the Book class
     
@@ -58,10 +58,12 @@ print("5. Show borrowed books")
 selection = int(input("Please select one by typing a number"))
 
 if selection ==  1:
-    title = input("Please insert title:")
-    author = input("Please author title:")
+    title = input("Please insert the title: ")
+    author = input("Please insert the author: ")
     book_new = Book(title, author)
-    book_new.save_book()
+    save_to_json("Library_catalogue.json", book_new.add_book())
+
+
     
 elif selection == 2:
     Book.remove_book()
@@ -70,7 +72,7 @@ elif selection == 3:
     print("Here are all the current books")
     data = Book.list_available_books()
     for x in range(len(data)):
-        print(f"{data[x]['Title:']} : {data[x]["Author:"]}")
+        print(f"{data[x]['Title:']} : {data[x]['Author:']}")
 
 
 

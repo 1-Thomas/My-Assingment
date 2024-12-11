@@ -34,10 +34,6 @@ class Book:
             "Author:" : self.author
         }
     
-    def save_book(self):
-        data = self.add_book()
-        with open("Library_catalogue.json", "a") as file:
-            json.dump(data, file, indent = 4)
 
 
     def remove_book():
