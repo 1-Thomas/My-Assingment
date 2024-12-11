@@ -21,8 +21,8 @@ class Member:
     def add_member(self):
         return {
             "Name:": self.name,
-            "Member Number": self.mnumber,
-            "Member Type": self.member_type
+            "Member Number:": self.mnumber,
+            "Member Type:": self.member_type
         }
 
 
@@ -38,7 +38,7 @@ class Member:
             return
 
         for x in range(len(data)):
-            print(f"{data[x]['Name:']} : {data[x]['Member Number']}")
+            print(f"Name: {data[x]['Name:']}    Member Number: {data[x]['Member Number:']}")
 
         select = input("Please type the name of the member you would like to remove: ")
 
@@ -48,7 +48,8 @@ class Member:
                 print(f"Member '{select}' removed successfully.")
                 overwrite("member_list.json", data)
                 return
-        print("No members under this name.")
+            else:
+                print("Could not find member")
 
 
             
@@ -64,22 +65,22 @@ class Member:
         with open("member_list.json", "r") as file:
             data = json.load(file)
             for x in range(len(data)):
-                print(f"{data[x]['Name:']} : {data[x]['Member Number']}")
+                print(f"Name: {data[x]['Name:']}")
 
         member_select = input("Please select which member you are")
         member_select2 = input("Please insert your member number")
 
         for i in range(len(data)):
-            if data[i]['Name:'] == member_select and data[i]['Member Number'] == member_select2 :
+            if data[i]['Name:'] == member_select and data[i]['Member Number:'] == member_select2 :
                 member1 = data[i]['Name:']
-                member2 = data[i]['Member Number']
+                member2 = data[i]['Member Number:']
                 break
         print(member1)
 
         with open("Library_catalogue.json", "r")as file:
             data = json.load(file)
             for x in range(len(data)):
-                print(f"{data[x]['Title:']} : {data[x]['Author:']}")
+                print(f"Title: {data[x]['Title:']}    Author: {data[x]['Author:']}")
 
         select = input("Please select the book you would like to borrow:")
         select2 = input("Please select the author of the book you would like to borrow:")
@@ -95,10 +96,10 @@ class Member:
         print(f"Member {member1} sucessfully borrowed the book {book1}")
             
         data = {    
-            "Member" : member1,
-            "Member Number" : member2,
-            "Book Borrowed" : book1,
-            "Author of book" : author
+            "Name:" : member1,
+            "Member Number:" : member2,
+            "Book Borrowed:" : book1,
+            "Author of book:" : author
         }
 
         save_to_json("borrowed_list.json", data)
@@ -115,6 +116,10 @@ class Member:
         Parameters:
         book (Book): The book to be returned.
         """
+        with open("member_list.json", "r") as file:
+            data = json.load(file)
+            for x in range(len(data)):
+                print(f"Name: {data[x]['Name:']}")
 
         sel = input("Please insert your name:")
         sel2 = input("Please insert your member number:")
@@ -123,14 +128,14 @@ class Member:
             data = json.load(file)
 
         for i in range(len(data)):
-            if data[i]['Member'] == sel and data[i]['Member Number'] == sel2:
+            if data[i]['Name:'] == sel and data[i]['Member Number:'] == sel2:
                 print(f"Here are all the books you have borrowed:{data[i]}")
                 sel3 = input("Please insert the book you would like to return")
                 sel4 = input("Please insert the author of the book you would like to return")
                 break
                     
         for i in range(len(data)):
-            if data[i]['Member'] == sel and data[i]['Member Number'] == sel2 and data[i]['Book Borrowed'] == sel3 and data[i]['Author of book'] == sel4:
+            if data[i]['Name:'] == sel and data[i]['Member Number:'] == sel2 and data[i]['Book Borrowed:'] == sel3 and data[i]['Author of book:'] == sel4:
                 book_to_return = {
                     "Title:": data[i]['Book Borrowed'],
                     "Author:": data[i]['Author of book']
@@ -176,9 +181,9 @@ class StudentMember(Member):
        
         return {
             "Name:": self.name,
-            "Member Number": self.mnumber,
-            "Member Type": self.member_type,
-            "Student ID": self.student_id
+            "Member Number:": self.mnumber,
+            "Member Type:": self.member_type,
+            "Student ID:": self.student_id
         }
 
 
@@ -194,7 +199,7 @@ class TeacherMember(Member):
     def add_member(self):
         return {
             "Name:": self.name,
-            "Member Number": self.mnumber,
-            "Member Type": self.member_type,
-            "Teacher ID": self.teacher_id
+            "Member Number:": self.mnumber,
+            "Member Type:": self.member_type,
+            "Teacher ID:": self.teacher_id
         }

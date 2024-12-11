@@ -47,7 +47,7 @@ class Book:
         with open("Library_catalogue.json", "r")as file:
             data = json.load(file)
         for x in range(len(data)):
-            print(f"{data[x]['Title:']} : {data[x]['Author:']}")
+            print(f"Title: {data[x]['Title:']}    Author: {data[x]['Author:']}")
 
         select = input("Please select the book you would like to remove:")
 
@@ -56,6 +56,9 @@ class Book:
                 del data[i]
                 overwrite("library_catalogue.json", data)
                 return
+            else:
+                print("Invalid Syntax Inserted")
+
 
 
     def list_available_books():

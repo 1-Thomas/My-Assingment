@@ -1,14 +1,26 @@
 [
     {
         "Name:": "1",
-        "Member Number": "1"
+        "Member Number:": "1",
+        "Member Type:": "Student",
+        "Student ID:": "1"
     },
     {
         "Name:": "2",
-        "Member Number": "2"
+        "Member Number:": "2",
+        "Member Type:": "Teacher",
+        "Teacher ID:": "2"
     },
     {
         "Name:": "3",
-        "Member Number": "3"
+        "Member Number:": "3",
+        "Member Type:": "Student",
+        "Student ID:": "3"
+    },
+    {
+        "Name:": "4",
+        "Member Number:": "4",
+        "Member Type:": "Teacher",
+        "Teacher ID:": "4"
     }
 ]

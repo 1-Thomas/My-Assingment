@@ -1,56 +1,10 @@
-'''
-    Test Classes and Methods here
-'''
 
 from book import Book
 from library import Library
 from member import Member, TeacherMember, StudentMember
-
 from SaveToJson import save_to_json
-def create_instance(self, book_new):
-    # Create a new instance of the Book class
-    
-    try:
-        book_new = Book("Eloquent Python", "Abdulhameed")
-        print("New instance of Book class created")
-        pass
-    except NameError as e:
-         print(e)
-
-    # Create a new instance of the Library class
-    try:
-        pass
-    except NameError as e:
-        pass
-
-    # Create a new instance of the Member class
-    try:
-        member = Member("Thomas", 3)
-        print("New instance of Member class created")
-        pass
-    except NameError as e:
-        print(e)
-        pass
-
-    # Create a new instance of the TeacherMember class
-    try:
-        pass
-    except NameError as e:
-        pass
-    return 
 
 
-
-def test_add_book(self):
-    """
-    Test adding a book to the library.
-    """
-    try:
-        book = Book("Test Book", "Test Author")
-        save_to_json("test_library_catalogue.json", book.add_book())
-        print("Test case for adding a book passed")
-    except Exception as e:
-        print(f"Error in test_add_book: {e}")
 
 '''
 Library Operations
@@ -82,7 +36,7 @@ elif selection == 3:
     print("Here are all the current books")
     data = Book.list_available_books()
     for x in range(len(data)):
-        print(f"{data[x]['Title:']} : {data[x]['Author:']}")
+        print(f"Title: {data[x]['Title:']} Author: {data[x]['Author:']}")
 
 
 elif selection == 4:
@@ -118,7 +72,7 @@ elif selection == 7:
     print("Here are all the borrowed books")
     data = Member.list_borrowed_books()
     for x in range(len(data)):
-        print(f"Member: {data[x]['Member']} Book Borrowed: {data[x]['Book Borrowed']}")
+        print(f"Name: {data[x]['Name:']} Book Borrowed: {data[x]['Book Borrowed']}")
 
 elif selection == 8:
     Member.return_book()
