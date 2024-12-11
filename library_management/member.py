@@ -141,14 +141,11 @@ class Member:
                 sel4 = input("Please insert the author of the book you would like to return")
                 break
                     
-        
-        
-
         for i in range(len(data)):
             if data[i]['Member'] == sel and data[i]['Member Number'] == sel2 and data[i]['Book Borrowed'] == sel3 and data[i]['Author of book'] == sel4:
                 book_to_return = {
                     "Title:": data[i]['Book Borrowed'],
-                    "Author": data[i]['Author of book']
+                    "Author:": data[i]['Author of book']
                 }
                 try:
                     # Add the returned book back to the library catalogue
@@ -164,10 +161,10 @@ class Member:
                 del data[i]
                 overwrite("borrowed_list.json", data)
 
-                print(f"You successfully returned '{data[i]['Book Borrowed']}'.")
+                print(f"You successfully returned '{sel3}'.")
                 return
 
-        print(f"'{sel3}' is not in your borrowed books list.")
+
 
 
 
