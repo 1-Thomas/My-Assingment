@@ -1,4 +1,5 @@
 import json
+from SaveToJson import overwrite
 class Member:
     """
     A class to represent a library member.
@@ -34,32 +35,31 @@ class Member:
             "Member Number" : self.mnumber
         }
 
-    def save_member(self):
-        data = self.add_member()
-        with open("member_list.json", "a") as file:
-            json.dump(data, file, indent = 4)
-    
-    
-    def remove_member():
-        """
-        Removes a member from the library.
 
-        Args:
-        - member (Member): The member to be removed.
-        """
-        with open("member_list.json", "r")as file:
+
+def remove_member():
+    """
+    Removes a member from the library.
+    """
+    try:
+        with open("member_list.json", "r") as file:
             data = json.load(file)
-        print(data)
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("No members are currently available")
+        return
 
-        select = input("Please select the member you would like to remove:")
+    for x in range(len(data)):
+        print(f"{data[x]['Name:']} : {data[x]['Member Number']}")
 
-        for i in range(len(data)):
-            if data[i]['Name:'] == select:
-                del data[i]
-                break
-        
-        with open("member_list.json", "w")as file:
-            json.dump(data, file, indent = 4)
+    select = input("Please type the name of the member you would like to remove: ")
+
+    for i in range(len(data)):
+        if data[i]['Name:'] == select:
+            del data[i]
+            print(f"Member '{select}' removed successfully.")
+            overwrite("member_list.json", data)
+            return
+    print("No members under this name.")
 
 
         

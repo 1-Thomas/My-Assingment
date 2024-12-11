@@ -1,5 +1,6 @@
 import json
 import os
+from SaveToJson import overwrite
 class Book:
     """
     A class to represent a book.
@@ -45,17 +46,17 @@ class Book:
         """
         with open("Library_catalogue.json", "r")as file:
             data = json.load(file)
-        print(data)
+        for x in range(len(data)):
+            print(f"{data[x]['Title:']} : {data[x]['Author:']}")
 
         select = input("Please select the book you would like to remove:")
 
         for i in range(len(data)):
             if data[i]['Title:'] == select:
                 del data[i]
-                break
-        
-        with open("Library_catalogue.json", "w")as file:
-            json.dump(data, file, indent = 4)
+                overwrite("library_catalogue.json", data)
+                return
+
 
     def list_available_books():
         """
