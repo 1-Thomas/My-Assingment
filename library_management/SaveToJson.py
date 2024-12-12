@@ -1,14 +1,14 @@
 import json
 def save_to_json(file_name, data):
     """
-    Saves data to the specified JSON file while maintaining a valid JSON array structure.
+    Saves data to the JSON file.
 
     Args:
     - file_name (str): The name of the JSON file.
     - data (dict): The data to be added to the file.
     """
     try:
-        # Load existing data from the file
+        # Load data from JSON file
         with open(file_name, "r") as file:
             list = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):

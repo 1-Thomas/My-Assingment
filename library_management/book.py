@@ -27,8 +27,12 @@ class Book:
         """
         Adds a book to the library.
 
-        Args:
-        - book (Book): The book to be added.
+        Attributes:
+        title (str): The title of the book.
+        author (str): The author of the book.
+
+        Returns:
+        dict: A dictionary with the book's title and author.
         """
         return{
             "Title:" : self.title,
@@ -41,11 +45,13 @@ class Book:
         """
         Removes a book from the library.
 
-        Args:
-        - book (Book): The book to be removed.
+        Attributes:
+        select (str) selection of a book.
         """
-        with open("Library_catalogue.json", "r")as file:
+    
+        with open("Library_catalogue.json", "r") as file:
             data = json.load(file)
+
         for x in range(len(data)):
             print(f"Title: {data[x]['Title:']}    Author: {data[x]['Author:']}")
 
@@ -61,9 +67,11 @@ class Book:
 
 
 
+
     def list_available_books():
         """
         Lists all available books in the library.
+
         """
         with open("Library_catalogue.json", "r")as file:
             data = json.load(file)

@@ -8,17 +8,32 @@ class Member:
     Attributes:
     name : str
         The name of the member.
+    mnumber : str
+        The member number.
+    member_type : str
+        The member type.
+    borrowed_books : list
+        A list of books borrowed by the member
     """
 
 
     def __init__(self, name, mnumber, member_type):
- 
+        """
+        Initializes a new member object.
+        """
+
         self.name = name
         self.mnumber = mnumber
         self.member_type = member_type
         self.borrowed_books = []
     
     def add_member(self):
+        """
+        Adds a new member to the library.
+
+        Returns:
+        dict: A dictionary with the members's name, number and type.
+        """
         return {
             "Name:": self.name,
             "Member Number:": self.mnumber,
@@ -29,12 +44,17 @@ class Member:
     def remove_member():
         """
         Removes a member from the library.
+
+        Allows user to insert the name of the member they want to remove.
+
+        Attributes:
+        select (str) selection of a member.
         """
         try:
             with open("member_list.json", "r") as file:
                 data = json.load(file)
         except (FileNotFoundError, json.JSONDecodeError):
-            print("No members are currently available")
+            print("No members found")
             return
 
         for x in range(len(data)):
@@ -58,10 +78,18 @@ class Member:
         """
         Adds a book to the member's borrowed books list.
 
-        Parameters:
-        book (Book): The book to be borrowed.
-        """
+        Prompts user to insert a member and a book they want to borrow from the library
 
+        Attributes:
+        member_select (str) selection of a member.
+        member_select2 (str) selection of a member number.
+        select (str) selection of a book.
+        select2 (str) selection of an author.
+        
+        Returns:
+        dict: A dictionary with the members's name, number, book borrowed and book author.
+        """
+      
         with open("member_list.json", "r") as file:
             data = json.load(file)
             for x in range(len(data)):
@@ -113,8 +141,13 @@ class Member:
         """
         Removes a book from the member's borrowed books list.
 
-        Parameters:
-        book (Book): The book to be returned.
+        Allows user to input a borrowed book to be returned to the library.
+
+        Attributes:
+        sel (str) selection of a member.
+        sel2 (str) selection of a member number.
+        sel3 (str) selection of a book.
+        sel4 (str) selection of an author.
         """
         with open("member_list.json", "r") as file:
             data = json.load(file)
@@ -171,6 +204,15 @@ class Member:
 class StudentMember(Member):
 
     def __init__(self, name, mnumber, student_id):
+        """
+        Initializes a new student member.
+        
+        Attributes:
+        - name (str): Name of student.
+        - mnumber (str): Member number for the student.
+        - member_type (str) The type of member
+        - student_id (str): Student number.
+        """
         self.name = name
         self.mnumber = mnumber
         self.member_type = "Student"
@@ -178,7 +220,12 @@ class StudentMember(Member):
         self.student_id = student_id
 
     def add_member(self):
-       
+        """
+        Adds a student to the library.
+        
+        Returns:
+        dict: A dictionary with the students's name, number, type and book ID.
+        """
         return {
             "Name:": self.name,
             "Member Number:": self.mnumber,
@@ -189,6 +236,16 @@ class StudentMember(Member):
 
 class TeacherMember(Member):
     def __init__(self, name, mnumber, teacher_id):
+
+        """
+        Initializes a new teacher member.
+        
+        Attributes:
+        - name (str): Name of teacher.
+        - mnumber (str): Member number for the teacher.
+        - member_type (str) The type of member
+        - student_id (str): Teacher number.
+        """
 
         self.name = name
         self.mnumber = mnumber
