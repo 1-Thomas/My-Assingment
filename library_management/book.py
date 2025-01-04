@@ -48,22 +48,25 @@ class Book:
         Attributes:
         select (str) selection of a book.
         """
-    
+
         with open("Library_catalogue.json", "r") as file:
             data = json.load(file)
 
+        # Shows user all books
         for x in range(len(data)):
             print(f"Title: {data[x]['Title:']}    Author: {data[x]['Author:']}")
-
-        select = input("Please select the book you would like to remove:")
-
+        
+        # Prompts user to input the book they want to remove
+        select = input("Please select the book you would like to remove: ")
+       
+        # Search and remove the book
         for i in range(len(data)):
             if data[i]['Title:'] == select:
                 del data[i]
                 overwrite("library_catalogue.json", data)
+                print(f"{select} Deleted Successfully")
                 return
-            else:
-                print("Invalid Syntax Inserted")
+
 
 
 
@@ -73,19 +76,7 @@ class Book:
         Lists all available books in the library.
 
         """
+
         with open("Library_catalogue.json", "r")as file:
             data = json.load(file)
         return data
-
-
-
-            
-
-
-     
-
-
-
-
-    
-

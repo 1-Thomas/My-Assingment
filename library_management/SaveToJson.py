@@ -7,18 +7,17 @@ def save_to_json(file_name, data):
     - file_name (str): The name of the JSON file.
     - data (dict): The data to be added to the file.
     """
+    #Reads the JSON file
     try:
-        # Load data from JSON file
         with open(file_name, "r") as file:
             list = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
-        # Initialize an empty list if the file doesn't exist or is invalid
         list = []
 
-    # Append the new data to the list
+    # Append the data to list
     list.append(data)
 
-    # Write the updated list back to the file
+    # Write back to file
     with open(file_name, "w") as file:
         json.dump(list, file, indent=4)
 

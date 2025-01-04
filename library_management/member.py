@@ -19,7 +19,7 @@ class Member:
 
     def __init__(self, name, mnumber, member_type):
         """
-        Initializes a new member object.
+        Initialises a new member object.
         """
 
         self.name = name
@@ -50,18 +50,23 @@ class Member:
         Attributes:
         select (str) selection of a member.
         """
+        
         try:
+            # Reads the JSON file and loads existing members
             with open("member_list.json", "r") as file:
                 data = json.load(file)
         except (FileNotFoundError, json.JSONDecodeError):
             print("No members found")
             return
-
+        
+        # Show user all members in a formatted structure
         for x in range(len(data)):
             print(f"Name: {data[x]['Name:']}    Member Number: {data[x]['Member Number:']}")
-
+        
+        # Prompt user to input the book they want to remove
         select = input("Please type the name of the member you would like to remove: ")
 
+        # Search and remove member
         for i in range(len(data)):
             if data[i]['Name:'] == select:
                 del data[i]
@@ -89,15 +94,17 @@ class Member:
         Returns:
         dict: A dictionary with the members's name, number, book borrowed and book author.
         """
-      
+        # Loads members from the JSON file and outputs them
         with open("member_list.json", "r") as file:
             data = json.load(file)
             for x in range(len(data)):
                 print(f"Name: {data[x]['Name:']}")
 
-        member_select = input("Please select which member you are")
-        member_select2 = input("Please insert your member number")
-
+        # Users user input to select member name and number
+        member_select = input("Please select which member you are ")
+        member_select2 = input("Please insert your member number ")
+        
+        # Validates the user input
         for i in range(len(data)):
             if data[i]['Name:'] == member_select and data[i]['Member Number:'] == member_select2 :
                 member1 = data[i]['Name:']
@@ -105,14 +112,18 @@ class Member:
                 break
         print(member1)
 
+
+        # Loads the library catalogue JSON file and outputs all books
         with open("Library_catalogue.json", "r")as file:
             data = json.load(file)
             for x in range(len(data)):
                 print(f"Title: {data[x]['Title:']}    Author: {data[x]['Author:']}")
-
-        select = input("Please select the book you would like to borrow:")
-        select2 = input("Please select the author of the book you would like to borrow:")
-
+        
+        # Prompts user to insert the book and author they would like to borrow
+        select = input("Please select the book you would like to borrow: ")
+        select2 = input("Please select the author of the book you would like to borrow: ")
+        
+        # Validates the user selected book and removes it if in the catalogue 
         for i in range(len(data)):
             if data[i]['Title:'] == select and data[i]['Author:'] == select2:
                 book1 = data[i]['Title:'] 
@@ -121,13 +132,14 @@ class Member:
                 overwrite("Library_catalogue.json", data)
                 break
         
-        print(f"Member {member1} sucessfully borrowed the book {book1}")
+        print(f"Member {member_select} sucessfully borrowed the book {select}")
             
+        # Add the borrowed book the the borrowed_list.json with members details attached
         data = {    
             "Name:" : member1,
             "Member Number:" : member2,
             "Book Borrowed:" : book1,
-            "Author of book:" : author
+            "Author of Book:" : author
         }
 
         save_to_json("borrowed_list.json", data)
@@ -149,29 +161,35 @@ class Member:
         sel3 (str) selection of a book.
         sel4 (str) selection of an author.
         """
+        # Load members from JSON file and output them
         with open("member_list.json", "r") as file:
             data = json.load(file)
             for x in range(len(data)):
                 print(f"Name: {data[x]['Name:']}")
 
-        sel = input("Please insert your name:")
-        sel2 = input("Please insert your member number:")
+        # Users user input to select member name and number
+        sel = input("Please insert your name: ")
+        sel2 = input("Please insert your member number: ")
 
         with open("borrowed_list.json", "r") as file:
             data = json.load(file)
 
+
+        # Output all books borrowed by selected member
         for i in range(len(data)):
             if data[i]['Name:'] == sel and data[i]['Member Number:'] == sel2:
-                print(f"Here are all the books you have borrowed:{data[i]}")
-                sel3 = input("Please insert the book you would like to return")
-                sel4 = input("Please insert the author of the book you would like to return")
+                print("Here are all the books you have borrowed")
+                print(f"Book:  {data[i]['Book Borrowed:']}   Author:  {data[i]['Author of Book:']} ")
+                sel3 = input("Please insert the book you would like to return ")
+                sel4 = input("Please insert the author of the book you would like to return ")
                 break
-                    
+            
+        # Validate input and update library_catalogue.json
         for i in range(len(data)):
-            if data[i]['Name:'] == sel and data[i]['Member Number:'] == sel2 and data[i]['Book Borrowed:'] == sel3 and data[i]['Author of book:'] == sel4:
+            if data[i]['Name:'] == sel and data[i]['Member Number:'] == sel2 and data[i]['Book Borrowed:'] == sel3 and data[i]['Author of Book:'] == sel4:
                 book_to_return = {
-                    "Title:": data[i]['Book Borrowed'],
-                    "Author:": data[i]['Author of book']
+                    "Title:": data[i]['Book Borrowed:'],
+                    "Author:": data[i]['Author of Book:']
                 }
                 try:
                     # Add the returned book back to the library catalogue
@@ -199,13 +217,15 @@ class Member:
             data = json.load(file)
         return data
 
+        
+
 
 
 class StudentMember(Member):
 
     def __init__(self, name, mnumber, student_id):
         """
-        Initializes a new student member.
+        Initialises a new student member.
         
         Attributes:
         - name (str): Name of student.
@@ -238,7 +258,7 @@ class TeacherMember(Member):
     def __init__(self, name, mnumber, teacher_id):
 
         """
-        Initializes a new teacher member.
+        Initialises a new teacher member.
         
         Attributes:
         - name (str): Name of teacher.

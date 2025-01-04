@@ -65,7 +65,7 @@ class TestMain(unittest.TestCase):
 
         """
         try:
-            student_member = StudentMember("Alice", "001", "S123")
+            student_member = StudentMember("Alice", "2", "2")
             with patch('builtins.open', new_callable=mock_open) as mock_file:
                 save_to_json("member_list.json", student_member.add_member())
             print("Add_student_member Test Passed")
@@ -80,7 +80,7 @@ class TestMain(unittest.TestCase):
 
         """
         try:
-            teacher_member = TeacherMember("Bob", "002", "T456")
+            teacher_member = TeacherMember("Bob", "2", "2")
             with patch('builtins.open', new_callable=mock_open) as mock_file:
                 save_to_json("member_list.json", teacher_member.add_member())
             print("Add_teacher_member Test Passed")
@@ -94,7 +94,7 @@ class TestMain(unittest.TestCase):
         Mocks the Member.remove_member() function to test removing a member from the JSON file.
         """
         try:
-            with patch('builtins.open', new_callable=mock_open, read_data='[{"Name:": "Alice", "Member Number:": "001"}]') as mock_file:
+            with patch('builtins.open', new_callable=mock_open, read_data='[{"Name:": "Alice", "Member Number:": "2"}]') as mock_file:
                 Member.remove_member()
             print("Remove_member Test Passed")
         except NameError as e:
@@ -109,7 +109,7 @@ class TestMain(unittest.TestCase):
         Mocks the Member.borrow_book() function using sample data to test if a member can borrow a book.
         """
         try:
-            with patch('builtins.open', new_callable=mock_open, read_data='[{"Name:": "Alice", "Member Number": "001", "Book Borrowed": "a","Author of book": "a"}]') as mock_file:
+            with patch('builtins.open', new_callable=mock_open, read_data='[{"Name:": "Alice", "Member Number:": "2", "Title:": "a","Author:": "a"}]')  as mock_file:
                 Member.borrow_book()
             print("Borrow_book Test Passed")
         except NameError as e:
@@ -122,7 +122,7 @@ class TestMain(unittest.TestCase):
         Mocks the Member.return_book() function using sample data to test if a member return a book.
         """
         try:
-            with patch('builtins.open', new_callable=mock_open, read_data='[{"Name:": "Alice", "Member Number": "001","Book Borrowed": "a","Author of book": "a"}]') as mock_file:
+            with patch('builtins.open', new_callable=mock_open, read_data='[{"Name:": "Alice", "Member Number:": "2","Book Borrowed:": "a", "Author of Book:": "a"}]') as mock_file:
                 Member.return_book()
             print("Return_book Test Passed")
         except NameError as e:
