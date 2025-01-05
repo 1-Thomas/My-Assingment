@@ -1,14 +1,8 @@
 [
     {
-        "Name:": "1",
+        "Name:": "Thomas",
         "Member Number:": "1",
-        "Book Borrowed:": "1",
-        "Author of Book:": "b"
-    },
-    {
-        "Name:": "2",
-        "Member Number:": "2",
-        "Book Borrowed:": "Lord of the Rings",
-        "Author of Book:": "J.R.R Tolkien"
+        "Book Borrowed:": "Harry Potter",
+        "Author of Book:": "J.K Rowling"
     }
 ]

@@ -49,17 +49,17 @@ elif selection == "4":
     print("Add a new member:")
     print("1. Add Student Member")
     print("2. Add Teacher Member")
-    type = input(int("Please enter a number to select a member type 1: Student  2: Teacher): "))
+    type = input("Please enter a number to select a member type 1: Student  2: Teacher): ")
     name = input("Please insert the member's name: ")
     mnumber = input("Please insert the member number: ")
 
-    if type == 1:
+    if type == "1":
         student_id = input("Please insert the student ID: ")
         student_member = StudentMember(name, mnumber, student_id)
         save_to_json("member_list.json", student_member.add_member())
 
 
-    elif type == 2:
+    elif type == "2":
         teacher_id = input("Please insert the teacher ID: ")
         teacher_member = TeacherMember(name, mnumber, teacher_id)
         save_to_json("member_list.json", teacher_member.add_member())
